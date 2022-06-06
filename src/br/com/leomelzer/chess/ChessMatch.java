@@ -1,13 +1,16 @@
 package br.com.leomelzer.chess;
 
 import br.com.leomelzer.boardgame.Board;
+import br.com.leomelzer.boardgame.Position;
+import br.com.leomelzer.chess.pieces.King;
+import br.com.leomelzer.chess.pieces.Rook;
 
 public class ChessMatch {
-
     private Board board;
 
     public ChessMatch() {
         board = new Board(8, 8);
+        initialSetup();
     }
 
     public ChessPiece[][] getPieces() {
@@ -18,5 +21,11 @@ public class ChessMatch {
             }
         }
         return mat;
+    }
+
+    private void initialSetup(){
+        board.placePiece(new Rook(board, Color.WHITE), new Position(7,0));
+        board.placePiece(new King(board, Color.BLACK), new Position(0,4));
+        board.placePiece(new King(board, Color.WHITE), new Position(7,4));
     }
 }
